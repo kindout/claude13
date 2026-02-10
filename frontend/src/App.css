@@ -1,0 +1,199 @@
+/* =========================
+   Global styles (App)
+   ========================= */
+
+:root {
+  /* Typo */
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  line-height: 1.5;
+
+  /* Theme */
+  --bg: #0b1220;
+  --bg2: #0f172a;
+  --text: #e5e7eb;
+  --muted: #94a3b8;
+
+  --card: rgba(255, 255, 255, 0.06);
+  --card-border: rgba(255, 255, 255, 0.12);
+
+  --input: rgba(255, 255, 255, 0.08);
+  --input-border: rgba(255, 255, 255, 0.14);
+
+  --primary: #6366f1; /* indigo */
+  --primary-hover: #5458ee;
+
+  --danger: #ef4444;
+
+  --radius: 16px;
+  --shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  color: var(--text);
+
+  /* joli background */
+  background: radial-gradient(1200px 600px at 20% 10%, rgba(99, 102, 241, 0.25), transparent 60%),
+    radial-gradient(900px 500px at 80% 20%, rgba(56, 189, 248, 0.18), transparent 55%),
+    linear-gradient(180deg, var(--bg), var(--bg2));
+}
+
+/* Liens */
+a {
+  color: inherit;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+/* =========================
+   "Page" container (si ton composant Page rend un <main>)
+   ========================= */
+
+main {
+  width: min(1100px, 92vw);
+  margin: 32px auto;
+}
+
+/* Titres */
+h1,
+h2,
+h3 {
+  margin: 0 0 12px;
+  letter-spacing: -0.02em;
+}
+
+/* =========================
+   Inputs / Buttons (style générique)
+   ========================= */
+
+input,
+button {
+  font: inherit;
+}
+
+input {
+  width: 100%;
+  background: var(--input);
+  border: 1px solid var(--input-border);
+  color: var(--text);
+  border-radius: 12px;
+  padding: 12px 14px;
+  outline: none;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease, transform 0.05s ease;
+}
+
+input::placeholder {
+  color: rgba(229, 231, 235, 0.55);
+}
+
+input:focus {
+  border-color: rgba(99, 102, 241, 0.7);
+  box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.18);
+}
+
+button {
+  background: var(--primary);
+  color: white;
+  border: 0;
+  border-radius: 12px;
+  padding: 12px 14px;
+  cursor: pointer;
+  box-shadow: 0 10px 26px rgba(99, 102, 241, 0.25);
+  transition: transform 0.05s ease, background 0.15s ease, opacity 0.15s ease;
+}
+
+button:hover {
+  background: var(--primary-hover);
+}
+
+button:active {
+  transform: translateY(1px);
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* =========================
+   Cards / blocs (boards, login, etc.)
+   ========================= */
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(10px);
+}
+
+.card-padding {
+  padding: 16px;
+}
+
+/* Si tu veux styliser rapidement tes pages login/boards sans changer le JSX,
+   tu peux ajouter ces classes sur ton wrapper (optionnel) :
+   <div className="auth-shell card card-padding"> ... */
+
+.auth-shell {
+  width: min(420px, 92vw);
+  margin: 60px auto;
+}
+
+.auth-shell h1 {
+  text-align: center;
+  margin-bottom: 18px;
+}
+
+.auth-shell form {
+  display: grid;
+  gap: 12px;
+}
+
+.auth-shell p {
+  color: var(--muted);
+  text-align: center;
+}
+
+/* =========================
+   Helpers Kanban (ton existant, amélioré)
+   ========================= */
+
+.kanban-row {
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
+  padding-bottom: 10px;
+  scroll-snap-type: x mandatory;
+}
+
+.kanban-col {
+  min-width: 320px;
+  background: var(--card);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius);
+  padding: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.22);
+  scroll-snap-align: start;
+}
+
+/* Optionnel : scrollbar plus propre */
+.kanban-row::-webkit-scrollbar {
+  height: 10px;
+}
+.kanban-row::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.18);
+  border-radius: 999px;
+}

@@ -1,0 +1,14 @@
+{
+  "collectionName": "components_modele_contenu_publiables",
+  "info": {
+    "displayName": "contenu publiable",
+    "icon": "bulletList"
+  },
+  "options": {},
+  "attributes": {
+    "publication_date": {
+      "type": "datetime"
+    }
+  },
+  "config": {}
+}
